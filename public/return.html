@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Thanks for your order!</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="return.js" defer></script>
+    <title>Thanks for your order!</title>
+    <script src="return.js" defer></script>
+    <link href="../css/zuora.css" rel="stylesheet">
 </head>
 <body>
-  <section id="success" class="hidden">
-    <p>
-      We appreciate your business! A confirmation email will be sent to <span id="customer-email"></span>.
+<div class="mystore">
+    <header class="header">
+        <div class="container"><a class="header__link" href="http://www.zuora.com" to="#/">
+            <h1 class="header__title">Payment HPF Demo</h1>
+            <img src="../static/logo.svg" alt="Zuora logo" class="header__logo">
+        </a>
+        </div>
+    </header>
+    <main class="container">
+        <section id="success" class="hidden" style="width: 90%; text-align: center">
+            <p>
+                We appreciate your business! You can use the id <span id="payment-id"> </span> to track your order.
+            </p>
+            <p>
+                If you have any questions, please email <a href="mailto:support@example.com">support@example.com</a>.
+            </p>
+        </section>
 
-      If you have any questions, please email <a href="mailto:orders@example.com">orders@example.com</a>.
-    </p>
-  </section>
+    </main>
+</div>
 </body>
 </html>

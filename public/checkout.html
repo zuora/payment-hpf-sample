@@ -1,18 +1,56 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Accept a payment</title>
-    <meta name="description" content="A demo of a payment on Stripe" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="checkout.js" defer></script>
-  </head>
-  <body>
-    <!-- Display a payment form -->
-      <div id="checkout">
-        <!-- Checkout will insert the payment form here -->
-      </div>
-  </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Payment HPF Demo</title>
+    <link href="../css/zuora.css" rel="stylesheet">
+    <!-- Step 1 - Import zuora payment sdk javascript file-->
+    <script src="https://cdn.zuora.com/payment/hpf/zuora.js"></script>
+    <script src="checkout.js"></script>
+</head>
+
+<body>
+<div class="mystore">
+    <header class="header">
+        <div class="container"><a class="header__link" href="http://www.zuora.com" to="#/">
+            <h1 class="header__title">Payment SDK Demo</h1>
+            <img src="../static/logo.svg" alt="Zuora logo" class="header__logo">
+        </a>
+        </div>
+    </header>
+    <main class="container">
+        <section class="checkout">
+            <h2 class="checkout__title">Checkout</h2>
+            <div class="checkout__payment-form">
+                <h3 class="checkout__payment-form__title">Select your payment method</h3>
+                <div class="checkout__payment-form__container">
+                    <div>
+                        <ul>
+                            <!-- Step 2-->
+                            <li id="payment-request-button">
+                            </li>
+                        </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="checkout__order-summary">
+                <h3 class="checkout__order-summary__title">Order summary</h3>
+                <div class="order-summary">
+                    <ul class="order-summary__list">
+                        <li class="order-summary__list__list-item"><img src="../static/06.png" alt="Headphones"
+                                                                        class="lazyload-image lazyload-image--loaded order-summary__list__list-item__image">
+                            <p class="order-summary__list__list-item__title">iPhone 14 Pro</p>
+                            <p class="order-summary__list__list-item__price">$1599</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="checkout__order-summary__footer"><span
+                        class="checkout__order-summary__footer__label">Total:</span><span
+                        class="checkout__order-summary__footer__amount">$1599</span></div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
 </html>
