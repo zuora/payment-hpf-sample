@@ -11,7 +11,15 @@ async function initialize() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({name: "A03469583"})
+      body: JSON.stringify({
+        // if id or number exists, other fields are optional;
+        // if no number available, firstName, lastName, country, currency are required to create a new account
+        number: "A03469583",
+        firstName: "Leo",
+        lastName: "Demo",
+        country: "Norway",
+        currency: "USD"
+      })
     });
     if (!response.ok) {
       window.alert(`HTTP error! Status: ${response.status} Message: ${response.body}`);
