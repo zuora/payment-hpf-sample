@@ -14,7 +14,7 @@ async function initialize() {
       body: JSON.stringify({
         // if id or number exists, other fields are optional;
         // if no number available, firstName, lastName, country, currency are required to create a new account
-        number: "A03469583",
+        // number: "A03469583",
         firstName: "Leo",
         lastName: "Demo",
         country: "Norway",
