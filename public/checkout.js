@@ -29,7 +29,6 @@ async function initialize() {
 
   // Step 2 - Populate HPF configuration and create unapplied payment
   const configuration = {
-    environment: 'api_sandbox',
     paymentRequest: {
       accountId: null,
       country: "US",
@@ -53,6 +52,6 @@ async function initialize() {
   accountId().then(result => {
     configuration.paymentRequest.accountId = result;
     // Step 3 - Create HPF Component and mount it
-    zuora.create('HostedPaymentForm', configuration).mount("#payment-request-button");
+    zuora.create('PaymentForm', configuration).mount("#zuora-payment-form");
   })
 }
