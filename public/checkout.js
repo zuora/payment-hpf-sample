@@ -34,7 +34,7 @@ async function initialize() {
       country: "US",
       currency: 'USD',
       totalPriceLabel: "TestShop",
-      amount: 100
+      amount: 1599
     },
     onSuccess: function (response) {
       console.info('paymentMethodId: ' + response.paymentMethodId);
