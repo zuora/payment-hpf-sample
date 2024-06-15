@@ -21,19 +21,6 @@
     <main class="container">
         <section class="checkout">
             <h2 class="checkout__title">Checkout</h2>
-            <div class="checkout__payment-form">
-                <h3 class="checkout__payment-form__title">Select your payment method</h3>
-                <div class="checkout__payment-form__container">
-                    <div>
-                        <ul>
-                            <!-- Step 2-->
-                            <li id="zuora-payment-form">
-                            </li>
-                        </ul>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <div class="checkout__order-summary">
                 <h3 class="checkout__order-summary__title">Order summary</h3>
                 <div class="order-summary">
@@ -48,6 +35,14 @@
                 <div class="checkout__order-summary__footer"><span
                         class="checkout__order-summary__footer__label">Total:</span><span
                         class="checkout__order-summary__footer__amount">$1599</span></div>
+            </div>
+            <div class="checkout__payment-form">
+                <h3 class="checkout__payment-form__title">Select your payment method</h3>
+                <div class="checkout__payment-form__container">
+                    <!-- Step 2-->
+                    <div id="zuora-payment-form">
+                    </div>
+                </div>
             </div>
         </section>
     </main>

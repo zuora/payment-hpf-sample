@@ -15,15 +15,24 @@
         </div>
     </header>
     <main class="container">
-        <section id="success" class="hidden" style="width: 90%; text-align: center">
-            <p>
-                We appreciate your business! You can use the id <span id="payment-id"> </span> to track your order.
-            </p>
-            <p>
-                If you have any questions, please email <a href="mailto:support@example.com">support@example.com</a>.
-            </p>
-        </section>
+        <div class="div-return" id="success">
+            <div class="div-return-title-main">
+                <div class="div-return-title">
+                    <img src="../static/ok.svg" alt="Zuora success"/>
+                </div>
+                <div class="div-return-title">
+                    <img src="../static/arrow_back.svg" alt="Zuora success" style="display: inline-block;" onclick="javascript:window.history.back(-1);"/> &nbsp;
+                    <p class="div-return-title-p"> Thank You! Your Payment Was Successful </p>
+                </div>
+                <div class="div-return-box">
+                    <p>Check your email for confirmation</p>
+                    <p>Your order: <span id="payment-id"> </span> </p>
+                    <p>You can track your order by the id </p>
+                    <p>For any other queries, please email us at <u style="color: #0f4ac3">support@here.com</u></p>
+                </div>
+            </div>
 
+        </div>
     </main>
 </div>
 </body>
