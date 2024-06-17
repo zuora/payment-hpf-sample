@@ -720,9 +720,68 @@ p {
     padding: 0 16px
 }
 
+.div-return {
+    width: 757px;
+    height: 334px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    background-size: cover;
+    box-shadow: 0px 0px 25px rgba(0,0,0,0.07);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-return-title-main {
+    width: 577px;
+    height: 248px;
+    background-size: cover;
+}
+
+.div-return-title {
+    width: 526px;
+    height: 35px;
+    position: relative;
+    top: 60px;
+    left: 30px;
+    bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-return-title-p {
+    font-size: 23px;
+    color: #000000;
+    text-decoration: none solid rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.div-return-box {
+    width: 500px;
+    height: 135px;
+    background-size: cover;
+    position: relative;
+    top: 75px;
+    left: 100px;
+    bottom: 40px;
+}
+
+.div-return-line-p {
+    width: 245px;
+    height: 23px;
+    font-size: 19px;
+    color: #4d4d4d;
+    text-decoration: none solid rgb(77, 77, 77);
+    letter-spacing: 0.5px;
+}
+
 @media (min-width:1440px) {
     .container {
-        padding: 0
+        padding: 0;
+        display: flex;
+        justify-content: center;
     }
 }
 
