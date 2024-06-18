@@ -4,7 +4,7 @@ async function initialize() {
   // Step 1 - Populate Zuora Object
   const zuora = Zuora("pk_rO0ABXeoAF6s7QAFd1gCAAVMT0NBTAACMTgAIDQwMjg4M2JlNzhlZWI2MzkwMTc4ZWY1MmFmMWQwMWE1ACA0MDI4MDY2ZDhmY2RmNDIxMDE4ZmQ2ZjAwYTlkMDBhOAAAAY_W8AqeAEYwRAIgd08O_W8q7wMk8x1l9UlkenpNcDr86FK-YlwTgfWCepUCIAtPPbUl1KncpQzTn2hJKXQNFdnQKft0rCZX9H9JknN0");
 
-  // Step 2 - Get billing account
+  // Step 2 - Populate HPF configuration
   const configuration = {
     locale: "en",
     region: "US",
