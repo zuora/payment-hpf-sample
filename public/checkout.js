@@ -2,56 +2,60 @@ initialize();
 
 async function initialize() {
   // Step 1 - Populate Zuora Object
-  const zuora = Zuora("pk_rO0ABXc2AAUxMjM2OAAgOGFkMDljOWY4ZTg2MTEzZjAxOGU4ODI4YTRmNDdiZWQAC1tCQDFhMzY4Njhi");
+  const zuora = Zuora("pk_rO0ABXeoAF6s7QAFd1gCAAVMT0NBTAACMTgAIDQwMjg4M2JlNzhlZWI2MzkwMTc4ZWY1MmFmMWQwMWE1ACA0MDI4MDY2ZDhmY2RmNDIxMDE4ZmQ2ZjAwYTlkMDBhOAAAAY_W8AqeAEYwRAIgd08O_W8q7wMk8x1l9UlkenpNcDr86FK-YlwTgfWCepUCIAtPPbUl1KncpQzTn2hJKXQNFdnQKft0rCZX9H9JknN0");
 
-  // Step 2 - Get billing account
-  const accountId = async  () => {
-    const response = await fetch("/get-billing-account", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        // if id or number exists, other fields are optional;
-        // if no number available, firstName, lastName, country, currency are required to create a new account
-        // number: "A03469583",
-        firstName: "Leo",
-        lastName: "Demo",
-        country: "Norway",
-        currency: "USD"
-      })
-    });
-    if (!response.ok) {
-      window.alert(`HTTP error! Status: ${response.status} Message: ${response.body}`);
-    }
-    return await response.json();
-  };
-
-  // Step 2 - Populate HPF configuration and create unapplied payment
+  // Step 2 - Populate HPF configuration
   const configuration = {
-    paymentRequest: {
-      accountId: null,
-      country: "US",
-      currency: 'USD',
-      totalPriceLabel: "TestShop",
-      amount: 1599
+    locale: "en",
+    region: "US",
+    currency: "USD",
+    createPaymentSession: () => {
+      // generate payment session when end-customer click on the Pay button.
+      return new Promise((resolve, reject) => {
+        fetch("/create-payment-session", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName: "Leo",
+            lastName: "Demo",
+            country: "US",
+            currency: "USD",
+            amount: 1599,
+          })
+        }).then((response) => {
+          if (response.ok) {
+            response.json()
+                .then((paymentSessionToken) => {
+                  resolve(paymentSessionToken);
+                })
+          }
+        }).catch((error) => {
+          console.error("Error occurred while creating payment session.")
+          console.error(error);
+        })
+      });
     },
-    onSuccess: function (response) {
-      console.info('paymentMethodId: ' + response.paymentMethodId);
-      console.info('paymentId: ' + response.paymentId);
-      window.location.replace('return.html?pid=' + response.paymentId);
-    },
-    onError: function (response) {
-      console.error('code: ' + response.code);
-      console.error('message: ' + response.message);
-      if (response.message && !response.message.contains("The device does not support processing payments with Apple Pay")) {
-        window.alert("Payment fail: " + response.message);
+    onComplete: (result) => {
+      console.log("==========");
+      console.log("Payment Result");
+      console.log("==========");
+      console.log(`transaction result: ${JSON.stringify(result)}`);
+      if (result.success) {
+        window.location.replace('return.html?pid=' + result.paymentId);
+      } else {
+        window.alert("Payment fail: " + result.error?.message);
       }
     }
   };
-  accountId().then(result => {
-    configuration.paymentRequest.accountId = result;
-    // Step 3 - Create HPF Component and mount it
-    zuora.create('PaymentForm', configuration).mount("#zuora-payment-form");
-  })
+
+  // Step 3 - Create and mount payment form
+  zuora.createPaymentForm(configuration).then(function(form) {
+    form.mount("#zuora-payment-form")
+  }).catch(function(error) {
+    console.error("Error occurred while creating payment form.")
+    console.error(error);
+  });
+
 }
