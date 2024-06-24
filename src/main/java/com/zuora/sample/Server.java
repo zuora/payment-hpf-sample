@@ -18,8 +18,15 @@ import java.util.Map;
 public class Server {
 
     private static Gson gson = new Gson();
-    private final static ZuoraClient zuoraClient = new ZuoraClient("a113e78c-949b-4351-af45-6eed84da6e5e", "=kSm9jIclJNQ/+oXCeebxO3BHGQL1K1KkeoqwvwJ",
-            ZuoraClient.ZuoraEnv.SBX);
+    /**
+     * Please configure your OAuth client id here.
+     */
+    private static final String CLIENT_ID = "a113*****************************6e5e";
+    /**
+     * Please configure your OAuth client secret here.
+     */
+    private static final String CLIENT_SECRET = "=kSm9jIc****************************wvwJ";
+    private final static ZuoraClient zuoraClient = new ZuoraClient(CLIENT_ID, CLIENT_SECRET, ZuoraClient.ZuoraEnv.SBX);
 
 
     public static void main(String[] args) {
