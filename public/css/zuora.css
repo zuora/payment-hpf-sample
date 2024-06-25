@@ -541,6 +541,7 @@
 
 .checkout__order-summary,
 .checkout__payment-form {
+    width: 450px;
     flex: 0 0 100%;
     margin-bottom: 32px
 }
@@ -858,9 +859,6 @@ p {
     color: #d10244
 }
 
-apple-pay-button{
-    --apple-pay-button-width: 280px;
-    --apple-pay-button-height: 30px;
-    --apple-pay-button-border-radius: 5px;
-    --apple-pay-button-padding: 5px 0px;
+div.zpf-container h3 {
+    text-transform: none;
 }
