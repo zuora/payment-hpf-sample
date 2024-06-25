@@ -8,6 +8,5 @@ async function initialize() {
   if (paymentId) {
     document.getElementById('success').classList.remove('hidden');
     document.getElementById('payment-id').textContent = paymentId;
-    window.replace('http://localhost:8888/checkout.html')
   }
 }
