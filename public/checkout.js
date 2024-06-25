@@ -9,6 +9,7 @@ async function initialize() {
     locale: "en",
     region: "US",
     currency: "USD",
+    amount: "1599",
     createPaymentSession: () => {
       // generate payment session when end-customer click on the Pay button.
       return new Promise((resolve, reject) => {
