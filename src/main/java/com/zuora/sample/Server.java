@@ -40,13 +40,13 @@ public class Server {
             Map map = gson.fromJson(request.body(), Map.class);
             String firstName = (String) map.get("firstName");
             String lastName = (String) map.get("lastName");
-            String country = (String) map.get("country");
             String currency = (String) map.get("currency");
-            Integer amount = (Integer) map.get("amount");
+            String amount = (String) map.get("amount");
 
             final CreateAccountContact contact = new CreateAccountContact().firstName(firstName)
                     .lastName(lastName)
-                    .country(country);
+                    .country("US")
+                    .state("CA");
             final CreateAccountRequest createAccountRequest = new CreateAccountRequest()
                     .name(String.join(" ", firstName, lastName))
                     .billToContact(contact)
