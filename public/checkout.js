@@ -2,7 +2,7 @@ initialize();
 
 async function initialize() {
   // Step 1 - Populate Zuora Object
-  const publishableKey = "pk_rO0ABXezAGes7QAFd2ECAAthcGlfc2FuZGJveAAFMTIzNjgAIDExZTY0M2Y0YTNmMjAwYTBiMDYxMDAyNTkwNGM1N2Q2ACA4YWQwOWM5ZjhlODYxMTNmMDE4ZTg4MjhhNGY0N2JlZAAAAZBIx_0iAEgwRgIhAI_sx0PSnD0fYY6dZYgLC3VfL1OpK4sdr6rpWFmIdUaaAiEA1AMcot-oF3n-db9J9XQDONC9bqJ8lEMUp3E_xMSVhZA=";
+  const publishableKey = "pk_rO0ABXeoAF6s7QAFd1gCAAVMT0NBTAACMTgAIDQwMjg4M2JlNzhlZWI2MzkwMTc4ZWY1MmFmMWQwMWE1ACA0MDI4MDY2ZDhmY2RmNDIxMDE4ZmQ2ZjAwYTlkMDBhOAAAAY_W8AqeAEYwRAIgd08O_W8q7wMk8x1l9UlkenpNcDr86FK-YlwTgfWCepUCIAtPPbUl1KncpQzTn2hJKXQNFdnQKft0rCZX9H9JknN0";
   const zuora = Zuora(publishableKey);
 
   // Step 2 - Populate HPF configuration
