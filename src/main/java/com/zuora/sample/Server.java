@@ -31,6 +31,7 @@ import com.zuora.ZuoraClient;
 import com.zuora.model.*;
 
 import com.google.gson.Gson;
+import spark.utils.StringUtils;
 
 import java.math.BigDecimal;
 import java.nio.file.Paths;
@@ -64,6 +65,15 @@ public class Server {
             String lastName = (String) map.get("lastName");
             String currency = (String) map.get("currency");
             String amount = (String) map.get("amount");
+            String paymentMethodType = (String) map.get("paymentMethodType");
+            String paymentGatewayId;
+            if ("creditcard".equals(paymentMethodType)) {
+                // Use Stripe gateway
+                paymentGatewayId = "stripeGatewayId";
+            } else {
+                // Use Adyen Gateway
+                paymentGatewayId = "adyenGatewayId";
+            }
 
             final CreateAccountContact contact = new CreateAccountContact().firstName(firstName)
                     .lastName(lastName)
@@ -83,6 +93,9 @@ public class Server {
                     .amount(new BigDecimal(amount))
                     .processPayment(true)
                     .accountId(createAccountResponse.getAccountId());
+            if (StringUtils.isNotBlank(paymentGatewayId)) {
+                createPaymentSessionRequest.setPaymentGateway(paymentGatewayId);
+            }
             final CreatePaymentSessionResponse createPaymentSessionResponse = zuoraClient.paymentMethodsApi().createPaymentSessionApi(createPaymentSessionRequest).execute();
 
             return gson.toJson(createPaymentSessionResponse.getToken());

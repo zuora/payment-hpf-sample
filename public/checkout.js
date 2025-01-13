@@ -22,8 +22,6 @@
  * SOFTWARE.
  */
 
-initialize();
-
 async function initialize() {
   // Step 1 - Populate Zuora Object
   const publishableKey = "pk_rO0ABXeoAF6s7QAFd1gCAAVMT0NBTAACMTgAIDQwMjg4M2JlNzhlZWI2MzkwMTc4ZWY1MmFmMWQwMWE1ACA0MDI4MDY2ZDhmY2RmNDIxMDE4ZmQ2ZjAwYTlkMDBhOAAAAY_W8AqeAEYwRAIgd08O_W8q7wMk8x1l9UlkenpNcDr86FK-YlwTgfWCepUCIAtPPbUl1KncpQzTn2hJKXQNFdnQKft0rCZX9H9JknN0";
@@ -35,7 +33,8 @@ async function initialize() {
     region: "US",
     currency: "USD",
     amount: "1599.00",
-    createPaymentSession: () => {
+    createPaymentSession: (paymentSessionContext) => {
+      console.log("paymentSessionContext: ", paymentSessionContext);
       // generate payment session when end-customer click on the Pay button.
       return new Promise((resolve, reject) => {
         fetch("/create-payment-session", {
@@ -48,6 +47,7 @@ async function initialize() {
             lastName: "Demo",
             currency: "USD",
             amount: "1599.00",
+            paymentMethodType: paymentSessionContext.paymentMethodType,
           })
         }).then((response) => {
           if (response.ok) {
