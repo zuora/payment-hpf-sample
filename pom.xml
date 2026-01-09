@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.zuora.sdk</groupId>
             <artifactId>zuora-sdk-java</artifactId>
-            <version>3.2.1</version>
+            <version>3.13.0</version>
         </dependency>
     </dependencies>
     <build>
